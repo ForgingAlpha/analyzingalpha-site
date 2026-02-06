@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PostHeader from '../components/PostHeader.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  heroImage?: ImageMetadata;
+  readingTime?: number;
+  tags?: string[];
+}
+
+const { title, description, publishDate, updatedDate, heroImage, readingTime, tags } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="mx-auto max-w-3xl px-6 py-12">
+    {heroImage && (
+      <img
+        src={heroImage.src}
+        width={heroImage.width}
+        height={heroImage.height}
+        alt=""
+        class="mb-8 rounded-lg"
+      />
+    )}
+    <PostHeader
+      title={title}
+      publishDate={publishDate}
+      updatedDate={updatedDate}
+      readingTime={readingTime}
+      tags={tags}
+    />
+    <div class="prose prose-invert prose-gray max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

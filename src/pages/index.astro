@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout
+  title="Analyzing Alpha - AI-First Algorithmic Trading"
+  description="AI-first algorithmic trading for tokenized markets."
+>
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+      Analyzing Alpha
+    </h1>
+    <p class="mt-4 text-lg text-text-muted">
+      AI-first algorithmic trading for tokenized markets.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-16">
+    <h2 class="text-2xl font-bold">Latest Posts</h2>
+    <div class="mt-4 divide-y divide-border">
+      {posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          publishDate={post.data.publishDate}
+          slug={post.id}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+    <a href="/blog/" class="mt-6 inline-block text-accent hover:text-accent-hover transition-colors">
+      View all posts &rarr;
+    </a>
+  </section>
+</BaseLayout>

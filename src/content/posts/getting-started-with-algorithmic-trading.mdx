@@ -1,0 +1,73 @@
+---
+title: "Getting Started with Algorithmic Trading in Python"
+description: "A practical introduction to building your first algorithmic trading system using Python, from data collection to backtesting."
+publishDate: 2026-02-06
+tags: ["python", "algorithmic-trading", "backtesting"]
+---
+
+Algorithmic trading uses computer programs to execute trades based on predefined rules. In this post, we'll walk through the fundamentals of building a simple trading system in Python.
+
+## Setting Up Your Environment
+
+First, install the required packages:
+
+```bash
+pip install pandas numpy matplotlib
+```
+
+## Loading Market Data
+
+We'll start by loading historical price data into a pandas DataFrame:
+
+```python
+import pandas as pd
+import numpy as np
+
+# Load historical data
+df = pd.read_csv("prices.csv", parse_dates=["date"], index_col="date")
+print(df.head())
+```
+
+## A Simple Moving Average Crossover
+
+One of the most common starter strategies is the moving average crossover:
+
+```python
+def moving_average_crossover(df: pd.DataFrame, short: int = 20, long: int = 50):
+    """Generate signals based on moving average crossover."""
+    df["sma_short"] = df["close"].rolling(window=short).mean()
+    df["sma_long"] = df["close"].rolling(window=long).mean()
+
+    df["signal"] = 0
+    df.loc[df["sma_short"] > df["sma_long"], "signal"] = 1
+    df.loc[df["sma_short"] < df["sma_long"], "signal"] = -1
+
+    return df
+```
+
+When the short-term moving average crosses above the long-term average, we go long. When it crosses below, we go short.
+
+## Backtesting the Strategy
+
+Here's a minimal backtest to evaluate performance:
+
+```python
+def backtest(df: pd.DataFrame) -> dict:
+    """Run a simple backtest on signal column."""
+    df["returns"] = df["close"].pct_change()
+    df["strategy_returns"] = df["signal"].shift(1) * df["returns"]
+
+    total_return = (1 + df["strategy_returns"]).cumprod().iloc[-1] - 1
+    sharpe = df["strategy_returns"].mean() / df["strategy_returns"].std() * np.sqrt(252)
+
+    return {"total_return": total_return, "sharpe_ratio": sharpe}
+```
+
+## What's Next
+
+This is a starting point. In future posts we'll cover:
+
+- Risk management and position sizing
+- More sophisticated signal generation with machine learning
+- Live execution with broker APIs
+- Tokenized market microstructure
