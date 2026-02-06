@@ -26,8 +26,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Email Capture Form -->
       <form
         id="waitlist-hero"
+        action="/thank-you"
+        method="POST"
+        name="waitlist"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
         class="max-w-lg mx-auto"
       >
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
         <div class="flex flex-col sm:flex-row gap-3">
           <input
             type="email"
@@ -200,8 +209,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Second Email Capture Form -->
       <form
         id="waitlist-bottom"
+        action="/thank-you"
+        method="POST"
+        name="waitlist"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
         class="max-w-lg mx-auto"
       >
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
         <div class="flex flex-col sm:flex-row gap-3">
           <input
             type="email"
