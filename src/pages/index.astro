@@ -1,41 +1,227 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
-import { getCollection } from 'astro:content';
-
-const posts = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-  .slice(0, 5);
 ---
 
 <BaseLayout
-  title="Analyzing Alpha - AI-First Algorithmic Trading"
-  description="AI-first algorithmic trading for tokenized markets."
+  title="Analyzing Alpha — AI-First Algorithmic Trading for Tokenized Markets"
+  description="AI-powered algorithmic trading research for crypto and tokenized assets. NautilusTrader tutorials, exchange APIs, and AI/ML strategies."
 >
-  <section class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-      Analyzing Alpha
-    </h1>
-    <p class="mt-4 text-lg text-text-muted">
-      AI-first algorithmic trading for tokenized markets.
-    </p>
+  <!-- ========== HERO — Above the Fold ========== -->
+  <section class="relative pt-12 pb-16 md:pt-24 md:pb-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm font-semibold tracking-widest uppercase text-accent mb-4">
+        Coming Soon
+      </p>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tighter mb-6">
+        AI-first algorithmic trading<br />
+        <span class="text-accent">for tokenized markets.</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-text-muted max-w-2xl mx-auto mb-10">
+        Research, code, and strategies at the intersection of artificial intelligence
+        and crypto-native markets — from backtesting to live execution.
+      </p>
+
+      <!-- Email Capture Form -->
+      <form
+        id="waitlist-hero"
+        class="max-w-lg mx-auto"
+      >
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+            autocomplete="email"
+            class="flex-1 py-3.5 px-5 text-base rounded-full border border-border bg-surface text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+          />
+          <button
+            type="submit"
+            class="py-3.5 px-8 text-base font-semibold rounded-full whitespace-nowrap bg-accent text-white hover:bg-accent-hover transition-colors cursor-pointer"
+          >
+            Get Early Access
+          </button>
+        </div>
+        <p class="mt-3 text-sm text-text-muted">
+          Join the waitlist. No spam, ever.
+        </p>
+      </form>
+    </div>
   </section>
 
-  <section class="mx-auto max-w-3xl px-6 pb-16">
-    <h2 class="text-2xl font-bold">Latest Posts</h2>
-    <div class="mt-4 divide-y divide-border">
-      {posts.map((post) => (
-        <PostCard
-          title={post.data.title}
-          description={post.data.description}
-          publishDate={post.data.publishDate}
-          slug={post.id}
-          tags={post.data.tags}
-        />
-      ))}
+  <!-- ========== THE PROBLEM ========== -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        The old playbook doesn't work here
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-500/10 text-red-400 mb-4 text-xl">
+            &times;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Markets never close</h3>
+          <p class="text-text-muted">
+            Crypto trades 24/7/365. Manual strategies can't keep up. You need systems
+            that run while you sleep.
+          </p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-500/10 text-red-400 mb-4 text-xl">
+            &times;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">TradFi tools don't fit</h3>
+          <p class="text-text-muted">
+            Most backtesting frameworks were built for equities. DeFi strategies, MEV,
+            and cross-chain arb require a different toolkit.
+          </p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-500/10 text-red-400 mb-4 text-xl">
+            &times;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Generic content wastes time</h3>
+          <p class="text-text-muted">
+            Candlestick pattern guides and indicator tutorials won't help you build
+            an AI-powered trading system.
+          </p>
+        </div>
+      </div>
     </div>
-    <a href="/blog/" class="mt-6 inline-block text-accent hover:text-accent-hover transition-colors">
-      View all posts &rarr;
-    </a>
+  </section>
+
+  <!-- ========== THE SOLUTION ========== -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Built for the next generation of markets
+      </h2>
+      <p class="text-lg text-text-muted text-center max-w-2xl mx-auto mb-12">
+        Focused research and production-grade code for traders building AI systems
+        on tokenized assets.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="rounded-xl p-6 border border-border bg-surface">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4 text-xl font-bold">
+            &alpha;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Strategy research</h3>
+          <p class="text-text-muted">
+            AI and machine learning applied to algorithmic trading. From signal generation
+            to portfolio construction on markets that trade around the clock.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-6 border border-border bg-surface">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4 text-xl font-bold">
+            &lt;/&gt;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Production-grade code</h3>
+          <p class="text-text-muted">
+            Backtesting frameworks, exchange integrations, and live execution systems.
+            Real code you can run, not toy examples.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-6 border border-border bg-surface">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4 text-xl font-bold">
+            &#x2699;
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Tokenized market analysis</h3>
+          <p class="text-text-muted">
+            Crypto-native strategies, DeFi opportunities, and the emerging world of
+            tokenized real-world assets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT'S COMING ========== -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        What's coming
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white text-xl font-bold mb-4">
+            1
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Research articles</h3>
+          <p class="text-text-muted">
+            In-depth guides on building algorithmic trading systems with AI for crypto
+            and tokenized assets.
+          </p>
+        </div>
+
+        <div>
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white text-xl font-bold mb-4">
+            2
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Open-source code</h3>
+          <p class="text-text-muted">
+            Production-ready strategies, backtests, and exchange integrations you can
+            run yourself.
+          </p>
+        </div>
+
+        <div>
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white text-xl font-bold mb-4">
+            3
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Community</h3>
+          <p class="text-text-muted">
+            A focused group of builders and researchers working at the frontier of
+            AI-powered trading.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOTTOM CTA ========== -->
+  <section class="py-16 md:py-24 bg-accent">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Be first to access the research
+      </h2>
+      <p class="text-lg text-blue-100 mb-10 max-w-xl mx-auto">
+        Early subscribers get every article, strategy, and code release before anyone else.
+      </p>
+
+      <!-- Second Email Capture Form -->
+      <form
+        id="waitlist-bottom"
+        class="max-w-lg mx-auto"
+      >
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+            autocomplete="email"
+            class="flex-1 py-3.5 px-5 text-base rounded-full border-2 border-blue-400 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+          />
+          <button
+            type="submit"
+            class="py-3.5 px-8 text-base font-semibold rounded-full whitespace-nowrap bg-white text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+          >
+            Get Early Access
+          </button>
+        </div>
+        <p class="mt-3 text-sm text-blue-200">
+          Join the waitlist. No spam, ever.
+        </p>
+      </form>
+    </div>
   </section>
 </BaseLayout>
